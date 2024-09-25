@@ -6,7 +6,7 @@
 
 // }
 
-// // ejemplo 2
+// // ejemplo 2 forma tradicional
 
 // function raiz(numero) {
 //     return Math.sqrt(numero);
@@ -63,73 +63,18 @@
 // ejemplo con conversion en temperatura
 
 
-let conversion;
-let opcion1;
-let estado = true;
 
+// !----- Funcion de flecha----!
 
-do {
-    opcion1 = parseInt(prompt(`1.Kelvin a Celsius \n 2. Kelvin a Fahrenheit\n 3.Fahrenheit a Celsius \n 4.Fahrenheit a Kelvin \n 5.Celsius a Kelvin \n 6.Celsius a Fahrenheit\n 7. Salir`))
+// 1 forma 
 
-    switch (opcion1) {
-        case 1:
-            alert("Conversion de Kelvin a Celsius");
-            alert(`Equivale a: ${kac()} Celsius`);
-            break;
-        case 2:
-            alert("Conversion de Kelvin a Fahrenheit");
-            alert(`Equivale a: ${kaf()} Fahrenheit`);
-            break;
-        case 3:
-            alert("Conversion de Fahrenheit a Celsius");
-            alert(`Equivale a: ${fac()} Celsius`)
-            break;
-        case 4:
-            alert("Conversion de Fahrenheit a Kelvin");
-            alert(`Equivale a: ${fak()} Kelvin`)
-            break;
-        case 5:
-            alert("Conversion de Celsius a Kelvin");
-            alert(`Equivale a: ${cak()} Kelvin`)
-            break;
-        case 6:
-            alert("Conversion de Celsius a Fahrenheit");
-            alert(`Equivale a: ${caf()} Fahrenheit`)
-            break;
-        case 7:
-            alert("saliendo...")
-            break;
-        default:
-            alert("Opcion no valida")
-    }
-} while (opcion1 != 7);
-
-function kac() {
-    let kac1 = (parseFloat(prompt(`Ingrese la temperatura en  kelvin`)));
-    return (kac1 - 273.15).toFixed(3);
+let multiplicacion1 = (a, b) => {
+    return a * b;
 }
 
-function kaf() {
-    let kaf1 = (parseFloat(prompt(`Ingrese la temperatura en  kelvin`)));
-    return (((kaf1 - 273.15) * 9 / 5) + 32).toFixed(3);
-}
+console.log(multiplicacion1(3, 5));
 
-function fac() {
-    let fac1 = (parseFloat(prompt(`Ingrese la temperatura en Fahrenheit`)));
-    return ((fac1 - 32) * 5 / 9).toFixed(3);
-}
+// 2 forma 
 
-function fak() {
-    let fak1 = (parseFloat(prompt(`Ingrese la temperatura en Fahrenheit`)));
-    return (((fak1 - 32) * 5 / 9) + 273.15).toFixed(3);;
-}
-
-function cak() {
-    let cak1 = (parseFloat(prompt(`Ingrese la temperatura en Celsius`)));
-    return (cak1 + 273.15).toFixed(3);;
-}
-
-function caf() {
-    let caf1 = (parseFloat(prompt(`Ingrese la temperatura en Celsius`)));
-    return (((caf1 * 9) / 5) + 32).toFixed(3);;
-}
+let multiplicacion2 = (a, b) => a * b;
+console.log(multiplicacion2(5,7));
