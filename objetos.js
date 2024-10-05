@@ -195,6 +195,105 @@
 // console.log(`El valor del producto tres es :${prod3.valorTotal()}`);
 
 
+// class Termostato {
+//     constructor(temperatura, estado) {
+//         this._temperatura = temperatura;
+//         this._estado = estado;
+//     }
+
+//     get temperatura() {
+//         return this._temperatura;
+//     }
+
+//     set temperatura(temperatura) {
+//         this._temperatura = temperatura;
+//     }
+//     get estado() {
+//         return this._estado;
+//     }
+
+//     set estado(estado) {
+//         this._estado = estado;
+//     }
+
+//     estadoTermostato() {
+//         alert(`El termostato se encuentra pagado`);
+//         let opcion = parseInt(prompt(`Ingrese\n 1. Para Encender\n 2 .Salir`));
+//         switch (opcion) {
+//             case 1:
+//                 this.encenderTermostato();
+//                 break;
+//             case 2:
+//                 alert(`Saliendo...`);
+//                 break;
+
+//             default:
+//                 break;
+//         }
+
+//     }
+
+//     encenderTermostato() {
+//         let opcion2 = parseInt(prompt(`Ingrese \n 1. Subir Temperatura \n 2.Bajar la temperatura \n 3. Apagar`));
+//         switch (opcion2) {
+//             case 1:
+//                 this.subirTemperatura();
+//                 break;
+//             case 2:
+//                 this.bajarTemperatura();
+//                 break;
+//             case 3:
+//                 this.estadoTermostato();
+//             default:
+//                 break;
+//         }
+
+//     }
+
+//     subirTemperatura() {
+
+//         let numero = true;
+
+//         while (numero) {
+//             this.temperatura = Math.floor(Math.random() * 50);
+//             let subirTemperatura2 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C`));
+
+//             if (!isNaN(subirTemperatura2) && subirTemperatura2 > 0) {
+//                 this._temperatura += subirTemperatura2;
+//                 alert(`La temperatura actual es: ${this._temperatura} °C`);
+//                 numero = false;
+//             } else {
+//                 alert('Por favor, ingrese un número válido.');
+//             }
+//         }
+//         alert(`El termostato se esta apagando`)
+//     }
+
+//     bajarTemperatura() {
+
+//         let numero1 = true;
+
+//         while (numero1) {
+//             this.temperatura = Math.floor(Math.random() * 50) + 50;
+//             let bajarTemperatura1 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C`));
+
+//             if (!isNaN(bajarTemperatura1 && bajarTemperatura1 > 0)) {
+//                 this._temperatura -= bajarTemperatura1;
+//                 alert(`La temperatura actual es: ${this._temperatura} °C`);
+//                 numero1 = false;
+//             } else {
+//                 alert('Por favor, ingrese un número válido.');
+//             }
+//         }
+//         alert(`El termostato se está apagando`);
+//     }
+
+// }
+
+// const test = new Termostato();
+
+// test.estadoTermostato();
+
 class Termostato {
     constructor(temperatura, estado) {
         this._temperatura = temperatura;
@@ -208,6 +307,7 @@ class Termostato {
     set temperatura(temperatura) {
         this._temperatura = temperatura;
     }
+
     get estado() {
         return this._estado;
     }
@@ -216,81 +316,85 @@ class Termostato {
         this._estado = estado;
     }
 
-    estadoTermostato() {
-        alert(`El termostato se encuentra pagado`);
-        let opcion = parseInt(prompt(`Ingrese\n 1. Para Encender\n 2 .Salir`));
-        switch (opcion) {
-            case 1:
-                this.encenderTermostato();
-                break;
-            case 2:
-                alert(`Saliendo...`);
-                break;
-
-            default:
-                break;
-        }
-
-    }
-
     encenderTermostato() {
-        let opcion2 = parseInt(prompt(`Ingrese \n 1. Subir Temperatura \n 2.Bajar la temperatura \n 3. Apagar`));
-        switch (opcion2) {
-            case 1:
-                this.subirTemperatura();
-                break;
-            case 2:
-                this.bajarTemperatura();
-                break;
-            case 3:
-                this.estadoTermostato();
-            default:
-                break;
+
+        alert(`La temperatura actual es: ${this._temperatura}°C`);
+
+
+        let menu = false;
+
+        while (!menu) {
+            let opcion2 = parseInt(prompt(`Ingrese \n 1. Subir Temperatura \n 2. Bajar la temperatura \n 3. Saliendo`));
+            if (isNaN(opcion2)) {
+                alert('Por favor, ingrese una opción válida.');
+                continue; // Vuelve al inicio del ciclo
+            }
+
+            switch (opcion2) {
+                case 1:
+                    this.subirTemperatura();
+                    break;
+                case 2:
+                    this.bajarTemperatura();
+                    break;
+                case 3:
+                    menu = true
+                    alert(`saliendo....`)
+                    break;
+                default:
+
+                    break;
+            }
+
+
         }
 
     }
 
     subirTemperatura() {
-
         let numero = true;
-
         while (numero) {
-            this.temperatura = Math.floor(Math.random() * 50);
-            let subirTemperatura2 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C`));
+            let subirTemperatura2 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C \n Ingrese la temperatura a subir:`));
 
             if (!isNaN(subirTemperatura2) && subirTemperatura2 > 0) {
                 this._temperatura += subirTemperatura2;
-                alert(`La temperatura actual es: ${this._temperatura} °C`);
+                alert(`La nueva temperatura es: ${this._temperatura} °C`);
                 numero = false;
             } else {
                 alert('Por favor, ingrese un número válido.');
             }
         }
-        alert(`El termostato se esta apagando`)
+        this.cambiarEstado();  // muestra el estado en el que esta el termostato
     }
 
     bajarTemperatura() {
-
         let numero1 = true;
-
         while (numero1) {
-            this.temperatura = Math.floor(Math.random() * 50) + 50;
-            let bajarTemperatura1 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C`));
-
-            if (!isNaN(bajarTemperatura1 && bajarTemperatura1 > 0)) {
+            let bajarTemperatura1 = parseFloat(prompt(`La temperatura actual es de: ${this._temperatura} °C \n Ingrese la temperatura a bajar:`));
+            if (!isNaN(bajarTemperatura1) && bajarTemperatura1 > 0) {
                 this._temperatura -= bajarTemperatura1;
-                alert(`La temperatura actual es: ${this._temperatura} °C`);
+                alert(`La nueva temperatura es: ${this._temperatura} °C`);
                 numero1 = false;
+
             } else {
                 alert('Por favor, ingrese un número válido.');
             }
         }
-        alert(`El termostato se está apagando`);
+        this.cambiarEstado();  // muestra el estado en el que esta el termostato
     }
 
+    cambiarEstado() {
+        if (this._temperatura >= 70) {
+            this._estado = "encendido";
+            alert("El termostato se está encendiendo.");
+        } else if (this._temperatura <= 30) {
+            this._estado = "apagado";
+            alert("El termostato se está apagando.");
+        }
+    }
 }
 
-const test = new Termostato();
+const encenderTermostato = Math.floor(Math.random() * 50) + 50;
+const test = new Termostato(encenderTermostato, "apagado");
 
-test.estadoTermostato();
-
+test.encenderTermostato();
